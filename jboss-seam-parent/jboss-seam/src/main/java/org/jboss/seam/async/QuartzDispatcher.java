@@ -78,7 +78,7 @@ public class QuartzDispatcher extends AbstractDispatcher<QuartzTriggerHandle, Sc
       JobDetail jobDetail = new JobDetail(jobName, null, QuartzJob.class);
       jobDetail.getJobDataMap().put("async", new AsynchronousEvent(type, parameters));
        
-      SimpleTrigger trigger = new SimpleTrigger(triggerName, null);      
+      SimpleTrigger trigger = new SimpleTrigger(triggerName);
       try 
       {
         scheduler.scheduleJob(jobDetail, trigger);
@@ -201,7 +201,7 @@ public class QuartzDispatcher extends AbstractDispatcher<QuartzTriggerHandle, Sc
             }
             else
             {
-               SimpleTrigger trigger = new SimpleTrigger(triggerName, null);
+               SimpleTrigger trigger = new SimpleTrigger(triggerName);
                scheduler.scheduleJob(jobDetail, trigger);
     
             }

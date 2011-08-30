@@ -291,6 +291,9 @@ public class ServerConversationContext implements Context
           }
           removals.clear();
 
+          // Nothing to do if there is no addition
+          if (!additions.isEmpty())
+          {
           // TODO this is a hack! We should find a more elegant way of handling
           // new objects being added to additions during the following for-loop
           PersistenceContexts.instance();
@@ -303,6 +306,7 @@ public class ServerConversationContext implements Context
               session.put(getKey(entry.getKey()), attribute);
           }
           additions.clear();
+      }
       }
       else
       {
