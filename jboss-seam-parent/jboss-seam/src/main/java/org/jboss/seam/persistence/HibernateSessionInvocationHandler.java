@@ -18,7 +18,6 @@ import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.transaction.spi.TransactionCoordinator;
 import org.hibernate.event.spi.EventSource;
 import org.hibernate.internal.CriteriaImpl;
-import org.hibernate.internal.SessionImpl;
 import org.hibernate.jdbc.ReturningWork;
 import org.hibernate.jdbc.Work;
 import org.hibernate.loader.custom.CustomQuery;
@@ -36,21 +35,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-/*import org.hibernate.collection.PersistentCollection;
-import org.hibernate.engine.ActionQueue;
-import org.hibernate.engine.EntityEntry;
-import org.hibernate.engine.EntityKey;
-import org.hibernate.engine.PersistenceContext;
-import org.hibernate.engine.QueryParameters;
-import org.hibernate.engine.SessionFactoryImplementor;
-import org.hibernate.engine.SessionImplementor;*/
-//import org.hibernate.engine.query.sql.NativeSQLQuerySpecification;
-//import org.hibernate.event.EventListeners;
-//import org.hibernate.event.EventSource;
-//import org.hibernate.impl.CriteriaImpl;
-//import org.hibernate.jdbc.Batcher;
-//import org.hibernate.jdbc.JDBCContext;
-
 /**
  * InvocationHandler that proxies the Session, and implements EL interpolation
  * in HQL. Needs to implement SessionImplementor because DetachedCriteria casts
@@ -63,10 +47,10 @@ import org.hibernate.engine.SessionImplementor;*/
  */
 public class HibernateSessionInvocationHandler implements InvocationHandler, Serializable, EventSource {
 
-    private SessionImpl delegate;
+    private Session delegate;
 
     public HibernateSessionInvocationHandler(Session paramDelegate) {
-        this.delegate = (SessionImpl) paramDelegate;
+        this.delegate = paramDelegate;
     }
 
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
@@ -769,7 +753,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public void applyNonFlushedChanges(NonFlushedChanges nonFlushedChanges) throws HibernateException {
-        delegate.applyNonFlushedChanges(nonFlushedChanges);
+        ((SessionImplementor) delegate).applyNonFlushedChanges(nonFlushedChanges);
     }
 
     /**
@@ -779,7 +763,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public JdbcConnectionAccess getJdbcConnectionAccess() {
-        return delegate.getJdbcConnectionAccess();
+        return ((SessionImplementor) delegate).getJdbcConnectionAccess();
     }
 
     /**
@@ -791,7 +775,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public EntityKey generateEntityKey(Serializable id, EntityPersister persister) {
-        return delegate.generateEntityKey(id, persister);
+        return ((SessionImplementor) delegate).generateEntityKey(id, persister);
     }
 
     /**
@@ -804,7 +788,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public CacheKey generateCacheKey(Serializable id, Type type, String entityOrRoleName) {
-        return delegate.generateCacheKey(id, type, entityOrRoleName);
+        return ((SessionImplementor) delegate).generateCacheKey(id, type, entityOrRoleName);
     }
 
     /**
@@ -816,7 +800,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public void disableTransactionAutoJoin() {
-        delegate.disableTransactionAutoJoin();
+        ((SessionImplementor) delegate).disableTransactionAutoJoin();
     }
 
     /**
@@ -826,7 +810,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public NonFlushedChanges getNonFlushedChanges() throws HibernateException {
-        return delegate.getNonFlushedChanges();
+        return ((SessionImplementor) delegate).getNonFlushedChanges();
     }
 
     /**
@@ -836,7 +820,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public TransactionCoordinator getTransactionCoordinator() {
-        return delegate.getTransactionCoordinator();
+        return ((SessionImplementor) delegate).getTransactionCoordinator();
     }
 
     /**
@@ -847,7 +831,7 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public LoadQueryInfluencers getLoadQueryInfluencers() {
-        return delegate.getLoadQueryInfluencers();
+        return ((SessionImplementor) delegate).getLoadQueryInfluencers();
     }
 
     /**
@@ -858,6 +842,6 @@ public class HibernateSessionInvocationHandler implements InvocationHandler, Ser
      */
     @Override
     public <T> T execute(Callback<T> callback) {
-        return delegate.execute(callback);
+        return ((SessionImplementor) delegate).execute(callback);
     }
 }
