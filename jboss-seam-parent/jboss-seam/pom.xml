@@ -142,7 +142,7 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.faces</groupId>
+            <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
             <optional>true</optional>
             <scope>provided</scope>
@@ -370,7 +370,7 @@
         </dependency>
 
         <dependency>
-            <groupId>javax.faces</groupId>
+            <groupId>com.sun.faces</groupId>
             <artifactId>jsf-impl</artifactId>
             <optional>true</optional>
         </dependency>

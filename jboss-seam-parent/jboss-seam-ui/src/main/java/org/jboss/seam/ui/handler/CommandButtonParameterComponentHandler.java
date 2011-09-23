@@ -5,9 +5,9 @@ import javax.faces.component.UIViewRoot;
 
 import static org.jboss.seam.ui.util.cdk.RendererBase.getUtils;
 
-import com.sun.facelets.FaceletContext;
-import com.sun.facelets.tag.jsf.ComponentConfig;
-import com.sun.facelets.tag.jsf.ComponentHandler;
+import javax.faces.view.facelets.FaceletContext;
+import javax.faces.view.facelets.ComponentConfig;
+import javax.faces.view.facelets.ComponentHandler;
 
 /**
  * If user didn't specify id on button, do it for them (we need one rendered)
@@ -24,7 +24,7 @@ public class CommandButtonParameterComponentHandler extends ComponentHandler
    }
    
    @Override
-   protected void onComponentCreated(FaceletContext ctx, UIComponent c,
+   public void onComponentCreated(FaceletContext ctx, UIComponent c,
          UIComponent parent)
    {
       if (getUtils().isCommandButton(parent) && parent.getId().startsWith(UIViewRoot.UNIQUE_ID_PREFIX))

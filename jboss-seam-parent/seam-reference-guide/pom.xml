@@ -34,6 +34,19 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<configuration>
+				 	<filesets>
+				 		<fileset>
+				 		    <directory>${project.basedir}/src/docbook/en-US</directory>
+				 			<includes>
+				 				<include>Version_Info.xml</include>
+				 			</includes>
+				 		</fileset>
+				 	</filesets>
+				</configuration>
+			</plugin>
+			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
 				<executions>

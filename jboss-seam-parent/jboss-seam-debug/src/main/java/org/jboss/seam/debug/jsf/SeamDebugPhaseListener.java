@@ -14,13 +14,13 @@ import javax.faces.event.PhaseListener;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.seam.contexts.FacesLifecycle;
+import org.jboss.seam.debug.facelets.StateWriterControl;
 import org.jboss.seam.navigation.Pages;
 
-import com.sun.facelets.Facelet;
-import com.sun.facelets.StateWriterControl;
-import com.sun.facelets.compiler.SAXCompiler;
-import com.sun.facelets.impl.DefaultFaceletFactory;
-import com.sun.facelets.impl.DefaultResourceResolver;
+import com.sun.faces.facelets.Facelet;
+import com.sun.faces.facelets.compiler.SAXCompiler;
+import com.sun.faces.facelets.impl.DefaultFaceletFactory;
+import com.sun.faces.facelets.impl.DefaultResourceResolver;
 
 /**
  * Intercepts any request for a view-id like /debug.xxx and renders
