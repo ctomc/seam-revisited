@@ -47,8 +47,8 @@
         <version.testng>5.10</version.testng>
         <version.resteasy>2.0-beta-2</version.resteasy>
         <version.spring>2.5.6.SEC02</version.spring>
-        <version.hibernate>4.0.0.CR1</version.hibernate>
-        <version.hibernate.search>4.0.0.Alpha1</version.hibernate.search>
+        <version.hibernate>4.0.0.CR3</version.hibernate>
+        <version.hibernate.search>4.0.0.Beta1</version.hibernate.search>
         <version.jbossembedded>beta3.SP12</version.jbossembedded>
         <version.emma>2.0.5312</version.emma>
         <version.gwt>2.3.0</version.gwt>
@@ -281,7 +281,7 @@
             <dependency>
                 <groupId>org.jbpm.jbpm3</groupId>
                 <artifactId>jbpm-jpdl</artifactId>
-                <version>3.2.6.SP1</version>
+                <version>3.2.11</version>
                 <optional>true</optional>
                 <exclusions>
                     <exclusion>
@@ -449,7 +449,7 @@
                 </exclusions>
             </dependency>
 
-            <dependency>
+           <!-- <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-annotations</artifactId>
                 <version>3.4.0.GA</version>
@@ -467,7 +467,7 @@
                         <artifactId>commons-logging</artifactId>
                     </exclusion>
                 </exclusions>
-            </dependency>
+            </dependency>-->
 
             <dependency>
                 <groupId>org.hibernate</groupId>

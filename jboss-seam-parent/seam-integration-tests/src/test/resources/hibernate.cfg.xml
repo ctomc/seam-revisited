@@ -44,7 +44,7 @@
     <mapping resource="org/jbpm/context/exe/variableinstance/JcrNodeInstance.hbm.xml"/>
     ==== jcr mappings (end) -->
 
-
+    <mapping resource="org/jbpm/db/hibernate.types.hbm.xml" />
     <!-- ###################### -->
     <!-- # jbpm mapping files # -->
     <!-- ###################### -->
