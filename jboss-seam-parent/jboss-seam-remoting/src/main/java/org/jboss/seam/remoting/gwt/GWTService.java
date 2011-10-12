@@ -475,6 +475,14 @@ public abstract class GWTService extends AbstractResource implements Serializati
       {
          return value;
       }
+      
+      String hash = "";
+      int pos = -1;
+      if ( (pos = serializedName.indexOf('/')) != -1) {
+         String[] s = serializedName.split("/");
+         serializedName = s[0];
+         hash = s[1];
+      }
 
       return Class.forName(serializedName, false, classLoader);
    }
